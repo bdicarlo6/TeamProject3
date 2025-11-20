@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Revolution: AI in Service Industry</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">AI Service Revolution</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#calculator">ROI Calculator</a></li>
+                <li><a href="#assessment">AI Readiness Quiz</a></li>
+                <li><a href="#sectors">Industry Sectors</a></li>
+                <li><a href="#analysis">Analysis</a></li>
+                <li><a href="#global">Global Comparison</a></li>
+                <li><a href="#guide">Implementation Guide</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#sources">Sources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Digital Revolution: How AI is Reshaping the Service Industry</h1>
+            <p class="hero-subtitle">Exploring AI adoption across Retail, Hospitality, and Financial Services</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <h2>95%</h2>
+                    <p>of restaurants use AI</p>
+                </div>
+                <div class="stat">
+                    <h2>12-18</h2>
+                    <p>months to positive ROI</p>
+                </div>
+                <div class="stat">
+                    <h2>35-50%</h2>
+                    <p>higher customer satisfaction</p>
+                </div>
+            </div>
+            <a href="#calculator" class="cta-button">Calculate Your ROI →</a>
+        </div>
+    </section>
+
+    <!-- ROI Calculator Section - ENHANCED BUT STAYS FIRST! -->
+    <section id="calculator" class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">AI ROI Calculator</h2>
+            <p class="section-subtitle">Estimate the costs and returns of implementing AI in your business</p>
+            
+            <div class="calculator">
+                <div class="calc-inputs">
+                    <div class="input-group">
+                        <label>Industry Sector:</label>
+                        <select id="calc-sector">
+                            <option value="retail">Retail</option>
+                            <option value="hospitality">Hospitality</option>
+                            <option value="financial">Financial Services</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Company Size:</label>
+                        <select id="calc-size">
+                            <option value="small">Small (1-50 employees)</option>
+                            <option value="medium">Medium (51-500 employees)</option>
+                            <option value="large">Large (500+ employees)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>AI Application:</label>
+                        <select id="calc-app">
+                            <option value="chatbot">Customer Service Chatbot</option>
+                            <option value="analytics">Predictive Analytics</option>
+                            <option value="automation">Process Automation</option>
+                        </select>
+                    </div>
+                    <button class="calc-btn" onclick="calculateROI()">Calculate ROI</button>
+                </div>
+                <div id="calc-results" class="calc-results hidden">
+                    <h4>Estimated Results:</h4>
+                    <div class="result-item">
+                        <span>Implementation Cost:</span>
+                        <span id="result-cost" class="result-value">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Expected ROI:</span>
+                        <span id="result-roi" class="result-value">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Time to Profitability:</span>
+                        <span id="result-time" class="result-value">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Risk Level:</span>
+                        <span id="result-risk" class="result-value">-</span>
+                    </div>
+                    
+                    <div class="comparison-box" id="comparison-display">
+                        <h5>📊 How You Compare to Similar Companies:</h5>
+                        <p id="comparison-content"></p>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button onclick="downloadBusinessCase()" class="btn-download">📄 Download Business Case</button>
+                        <button onclick="emailResults()" class="btn-secondary">📧 Email Results</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: AI Readiness Assessment -->
+    <section id="assessment" class="assessment-section">
+        <div class="container">
+            <h2 class="section-title">Is Your Business Ready for AI?</h2>
+            <p class="section-subtitle">Take this 2-minute quiz to get your personalized AI readiness score and action plan</p>
+            
+            <div class="assessment-tool">
+                <div id="question-container" class="question-card">
+                    <!-- Questions will be loaded by JavaScript -->
+                </div>
+                
+                <div class="assessment-progress">
+                    <div id="progress-bar" style="width: 14%;"></div>
+                    <p id="progress-text">Question 1 of 7</p>
+                </div>
+                
+                <div class="assessment-buttons">
+                    <button id="prev-btn" onclick="previousQuestion()" class="btn-secondary" style="display:none;">← Previous</button>
+                    <button id="next-btn" onclick="nextQuestion()" class="btn-primary">Next →</button>
+                </div>
+                
+                <div id="assessment-results" class="hidden assessment-results">
+                    <h3>Your AI Readiness Score</h3>
+                    <div id="score-display" class="score-circle"></div>
+                    <div id="recommendations" class="recommendations-list"></div>
+                    <button onclick="downloadActionPlan()" class="btn-download">📥 Download Your Personalized Action Plan</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Sectors -->
+    <section id="sectors" class="sectors">
+        <div class="container">
+            <h2 class="section-title">Industry Sectors</h2>
+            <p class="section-subtitle">Click on a sector to explore AI implementations and case studies</p>
+            <div class="sector-grid">
+                <div class="sector-card" onclick="showSector('retail')">
+                    <div class="sector-icon">🛒</div>
+                    <h3>Retail</h3>
+                    <p>AI-powered recommendations, inventory management, and customer service</p>
+                    <span class="learn-more">Learn More →</span>
+                </div>
+                <div class="sector-card" onclick="showSector('hospitality')">
+                    <div class="sector-icon">🏨</div>
+                    <h3>Hospitality</h3>
+                    <p>Automated reservations, personalized experiences, and operational efficiency</p>
+                    <span class="learn-more">Learn More →</span>
+                </div>
+                <div class="sector-card" onclick="showSector('financial')">
+                    <div class="sector-icon">💰</div>
+                    <h3>Financial Services</h3>
+                    <p>Chatbots, fraud detection, and automated advisory services</p>
+                    <span class="learn-more">Learn More →</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sector Details (Hidden by default) -->
+    <section id="sector-details" class="sector-details hidden">
+        <div class="container">
+            <button class="back-btn" onclick="hideSectorDetails()">← Back to Sectors</button>
+            <div id="sector-content"></div>
+            
+            <!-- NEW: Apply This Section -->
+            <div id="apply-insights" class="apply-section hidden">
+                <h3>🎯 Apply This to Your Business</h3>
+                <div class="apply-grid">
+                    <div class="apply-card">
+                        <h4>This Week:</h4>
+                        <ul id="this-week-actions"></ul>
+                    </div>
+                    <div class="apply-card">
+                        <h4>This Month:</h4>
+                        <ul id="this-month-actions"></ul>
+                    </div>
+                    <div class="apply-card">
+                        <h4>This Quarter:</h4>
+                        <ul id="this-quarter-actions"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cross-Sector Analysis -->
+    <section id="analysis" class="analysis">
+        <div class="container">
+            <h2 class="section-title">Cross-Sector Analysis</h2>
+            
+            <div class="analysis-tabs">
+                <button class="tab-btn active" onclick="showTab('success', this)">Success Factors</button>
+                <button class="tab-btn" onclick="showTab('failure', this)">Failure Patterns</button>
+                <button class="tab-btn" onclick="showTab('risk-assessment', this)">Your Risk Check</button>
+            </div>
+
+            <div id="success" class="tab-content active">
+                <h3>Key Success Factors</h3>
+                <div class="factor-grid">
+                    <div class="factor-card">
+                        <h4>Employee Training</h4>
+                        <p>Companies that invest in training employees to work with AI see 35-50% higher satisfaction</p>
+                    </div>
+                    <div class="factor-card">
+                        <h4>Realistic Expectations</h4>
+                        <p>Understanding AI capabilities and limitations leads to better implementation outcomes</p>
+                    </div>
+                    <div class="factor-card">
+                        <h4>Human-AI Balance</h4>
+                        <p>Successful companies use AI for routine tasks while humans handle complex issues</p>
+                    </div>
+                    <div class="factor-card">
+                        <h4>Data Quality</h4>
+                        <p>High-quality training data is essential for effective AI performance</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="failure" class="tab-content">
+                <h3>Common Failure Patterns</h3>
+                <div class="failure-list">
+                    <div class="failure-item">
+                        <span class="failure-icon">❌</span>
+                        <div>
+                            <h4>Inadequate Training Data</h4>
+                            <p>Insufficient or biased data leads to poor AI performance and customer frustration</p>
+                        </div>
+                    </div>
+                    <div class="failure-item">
+                        <span class="failure-icon">❌</span>
+                        <div>
+                            <h4>Poor System Integration</h4>
+                            <p>AI tools that don't integrate well with existing systems create workflow problems</p>
+                        </div>
+                    </div>
+                    <div class="failure-item">
+                        <span class="failure-icon">❌</span>
+                        <div>
+                            <h4>Unrealistic Expectations</h4>
+                            <p>Expecting AI to solve all problems leads to disappointment and abandonment</p>
+                        </div>
+                    </div>
+                    <div class="failure-item">
+                        <span class="failure-icon">❌</span>
+                        <div>
+                            <h4>Lack of Employee Buy-In</h4>
+                            <p>Resistance from staff undermines AI implementation effectiveness</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW: Risk Assessment Tab -->
+            <div id="risk-assessment" class="tab-content">
+                <h3>Check Your AI Implementation Risk</h3>
+                <p style="margin-bottom: 2rem;">Select all statements that apply to your current situation:</p>
+                <div class="risk-checklist">
+                    <label class="risk-checkbox">
+                        <input type="checkbox" class="risk-item" data-risk="high">
+                        <span>We don't have clean, organized data for AI training</span>
+                    </label>
+                    <label class="risk-checkbox">
+                        <input type="checkbox" class="risk-item" data-risk="medium">
+                        <span>Our employees are skeptical or worried about AI</span>
+                    </label>
+                    <label class="risk-checkbox">
+                        <input type="checkbox" class="risk-item" data-risk="high">
+                        <span>We haven't clearly defined what success looks like</span>
+                    </label>
+                    <label class="risk-checkbox">
+                        <input type="checkbox" class="risk-item" data-risk="positive">
+                        <span>✓ We're planning to start with a small pilot program</span>
+                    </label>
+                    <label class="risk-checkbox">
+                        <input type="checkbox" class="risk-item" data-risk="medium">
+                        <span>Our current IT systems are outdated or incompatible</span>
+                    </label>
+                    <label class="risk-checkbox">
+                        <input type="checkbox" class="risk-item" data-risk="high">
+                        <span>We expect AI to solve multiple major problems at once</span>
+                    </label>
+                    <label class="risk-checkbox">
+                        <input type="checkbox" class="risk-item" data-risk="positive">
+                        <span>✓ We have strong executive-level support for AI</span>
+                    </label>
+                    <label class="risk-checkbox">
+                        <input type="checkbox" class="risk-item" data-risk="medium">
+                        <span>We lack IT resources for ongoing AI maintenance</span>
+                    </label>
+                </div>
+                <button onclick="assessRisk()" class="calc-btn" style="margin-top: 2rem;">Calculate My Risk Score</button>
+                
+                <div id="risk-results" class="hidden" style="margin-top: 2rem;">
+                    <div class="risk-score-display">
+                        <h4>Your Risk Level:</h4>
+                        <div id="risk-indicator" class="risk-level"></div>
+                    </div>
+                    <div id="risk-recommendations" class="risk-recs"></div>
+                    <button onclick="downloadRiskReport()" class="btn-download">📋 Download Risk Mitigation Plan</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Comparison -->
+    <section id="global" class="global">
+        <div class="container">
+            <h2 class="section-title">Global Comparison</h2>
+            <p class="section-subtitle">AI adoption varies significantly across regions</p>
+            <div class="region-grid">
+                <div class="region-card">
+                    <h3>🇺🇸 United States</h3>
+                    <div class="region-stat">
+                        <span>Adoption Rate:</span>
+                        <strong>68%</strong>
+                    </div>
+                    <p>Leading in financial services AI; strong retail adoption; regulatory focus on transparency</p>
+                </div>
+                <div class="region-card">
+                    <h3>🇪🇺 Europe</h3>
+                    <div class="region-stat">
+                        <span>Adoption Rate:</span>
+                        <strong>52%</strong>
+                    </div>
+                    <p>Slower adoption due to strict GDPR; focus on ethical AI; strong in hospitality automation</p>
+                </div>
+                <div class="region-card">
+                    <h3>🌏 Asia</h3>
+                    <div class="region-stat">
+                        <span>Adoption Rate:</span>
+                        <strong>74%</strong>
+                    </div>
+                    <p>Highest adoption rates; government support; leading in customer-facing AI applications</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Guide -->
+    <section id="guide" class="guide">
+        <div class="container">
+            <h2 class="section-title">Implementation Guide</h2>
+            <div class="guide-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Assess Readiness</h3>
+                    <p>Evaluate your current systems, data quality, and organizational readiness for AI adoption</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Define Goals</h3>
+                    <p>Set clear, measurable objectives for what you want AI to achieve in your organization</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Select Technology</h3>
+                    <p>Choose AI tools that align with your goals, budget, and technical capabilities</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Train Team</h3>
+                    <p>Invest in employee training to ensure successful adoption and integration</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Pilot & Test</h3>
+                    <p>Start with a small-scale pilot to test effectiveness before full rollout</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <h3>Scale & Optimize</h3>
+                    <p>Gradually expand implementation while continuously monitoring and improving performance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Downloadable Resources Section -->
+    <section id="resources" class="resources">
+        <div class="container">
+            <h2 class="section-title">Actionable Resources & Templates</h2>
+            <p class="section-subtitle">Professional tools to jumpstart your AI implementation</p>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">📄</div>
+                    <h3>RFP Template</h3>
+                    <p>Complete Request for Proposal template for selecting AI vendors. Includes evaluation criteria and scoring matrix.</p>
+                    <button onclick="downloadTemplate('rfp')" class="btn-download">Download Template</button>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">📊</div>
+                    <h3>ROI Tracking Spreadsheet</h3>
+                    <p>Pre-built Excel spreadsheet with formulas to track KPIs, costs, and measure your AI implementation success.</p>
+                    <button onclick="downloadTemplate('roi-tracker')" class="btn-download">Download Spreadsheet</button>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">✅</div>
+                    <h3>Implementation Checklist</h3>
+                    <p>Week-by-week checklist covering all phases from planning to deployment. Prevent common oversights.</p>
+                    <button onclick="downloadTemplate('checklist')" class="btn-download">Download Checklist</button>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">👥</div>
+                    <h3>Employee Training Deck</h3>
+                    <p>PowerPoint presentation for introducing AI to your team. Addresses common concerns and builds buy-in.</p>
+                    <button onclick="downloadTemplate('training')" class="btn-download">Download Deck</button>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">📧</div>
+                    <h3>Communication Templates</h3>
+                    <p>Email templates for executives, employees, and customers. Manage change effectively.</p>
+                    <button onclick="downloadTemplate('emails')" class="btn-download">Download Templates</button>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">⚠️</div>
+                    <h3>Risk Management Guide</h3>
+                    <p>Framework for identifying risks and creating mitigation strategies throughout your AI journey.</p>
+                    <button onclick="downloadTemplate('risk-guide')" class="btn-download">Download Guide</button>
+                </div>
+            </div>
+
+            <div class="cta-box">
+                <h3>Want All Resources in One Package?</h3>
+                <button onclick="downloadAllResources()" class="cta-button">📦 Download Complete AI Implementation Toolkit</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sources -->
+    <section id="sources" class="sources">
+        <div class="container">
+            <h2 class="section-title">Research Sources</h2>
+            <div class="sources-list">
+                <div class="source-item">
+                    <h4>McKinsey (2025)</h4>
+                    <p>"AI in the workplace: A report for 2025"</p>
+                </div>
+                <div class="source-item">
+                    <h4>Deloitte (2024)</h4>
+                    <p>"How AI is revolutionizing restaurants"</p>
+                </div>
+                <div class="source-item">
+                    <h4>PwC (2025)</h4>
+                    <p>"2025 AI Business Predictions"</p>
+                </div>
+                <div class="source-item">
+                    <h4>TouchBistro (2024)</h4>
+                    <p>"2025 State of the Restaurant Industry Report"</p>
+                </div>
+                <div class="source-item">
+                    <h4>Harvard Business Review (2024)</h4>
+                    <p>"The AI Service Paradox"</p>
+                </div>
+                <div class="source-item">
+                    <h4>MIT Sloan Management Review (2024)</h4>
+                    <p>"When AI Service Fails"</p>
+                </div>
+                <div class="source-item">
+                    <h4>Amazon (2024)</h4>
+                    <p>Annual Report - AI Implementation Case Study</p>
+                </div>
+                <div class="source-item">
+                    <h4>Bank of America (2024)</h4>
+                    <p>"Erica Virtual Assistant Impact Report"</p>
+                </div>
+                <div class="source-item">
+                    <h4>U.S. Bureau of Labor Statistics (2024)</h4>
+                    <p>Service Industry Employment Trends</p>
+                </div>
+                <div class="source-item">
+                    <h4>Gartner (2024)</h4>
+                    <p>"AI Implementation Success Factors"</p>
+                </div>
+            </div>
+            <div class="team-info">
+                <h3>Project Team</h3>
+                <p><strong>Bennett DiCarlo</strong> - Hospitality Sector Lead & Project Coordinator</p>
+                <p><strong>Benjamin Roger</strong> - Retail Sector Lead & Data Visualization</p>
+                <p><strong>Charlie Iannone</strong> - Financial Services Lead & Interactive Features</p>
+                <p><strong>Nika Brusic</strong> - Global Comparison & UX/Design</p>
+                <p class="course-info">MGIS130 - Information Systems & Technology | Fall 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 MGIS130 Team Project - Digital Revolution: AI in Service Industry</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
